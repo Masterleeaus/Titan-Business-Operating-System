@@ -6,6 +6,12 @@ A Laravel-based AI-controlled business operating system built for the cleaning i
 
 ---
 
+## Portfolio housekeeping
+
+- This repository is the **Titan BOS application source**; it is not interchangeable with the `cleanly` repository. Their repository trees are distinct even though their current README text is identical. The README duplication is a documentation cleanup item, not evidence that either repository is a duplicate.
+- A tracked `.env.development` currently contains a production-style public URL and populated application/realtime secrets. Treat those values as exposed: rotate the application signing key and realtime credentials, replace the tracked file with a sanitized local template, and add `.env.*` to `.gitignore` while allowing `.env.example` and `.env.*.template`.
+- Portfolio status: **keep as the canonical Titan BOS application**. Its README should describe only implemented and verified capabilities; roadmap claims and pricing should be clearly labeled as planned or illustrative.
+
 ## What It Is
 
 Titan BOS replaces 5–7 separate tools most service businesses use:
