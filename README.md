@@ -190,7 +190,16 @@ npm run dev
 php artisan queue:work
 ```
 
-Run checks from a configured development environment before proposing changes. This README update did not run the application test suite or build.
+### Validation
+
+The repository defines a PHPUnit suite and frontend build scripts:
+
+```bash
+php artisan test
+npm run build
+```
+
+Run these from a configured development environment. They were not run during this README update.
 
 ---
 
