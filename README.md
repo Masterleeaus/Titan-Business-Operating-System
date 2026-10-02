@@ -1,4 +1,4 @@
-# Titan BOS — Business Operating System for Service Industries
+# Titan Zero Modular Business Platform
 
 > **Titan BOS. Zero BS.**
 
