@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Titan Zero Modular Business Platform</title>
+  <desc id="desc">LARAVEL APPLICATION SOURCE banner.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101923"/><stop offset="1" stop-color="#3B8F86"/></linearGradient><pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#ffffff" stroke-opacity=".07"/></pattern></defs>
+  <rect width="1200" height="320" rx="20" fill="url(#bg)"/><rect width="1200" height="320" rx="20" fill="url(#grid)"/>
+  <path d="M790 255 950 70l90 102 80-78" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="3"/><circle cx="950" cy="70" r="6" fill="#fff" fill-opacity=".55"/><circle cx="1040" cy="172" r="5" fill="#fff" fill-opacity=".4"/><circle cx="1120" cy="94" r="7" fill="#fff" fill-opacity=".5"/>
+  <rect x="72" y="72" width="7" height="176" rx="3.5" fill="#ffffff" fill-opacity=".72"/>
+  <text x="104" y="142" fill="#f7f9fb" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="34" font-weight="700">Titan Zero Modular Business Platform</text>
+  <text x="106" y="193" fill="#e2ebf0" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" letter-spacing="2.5">LARAVEL APPLICATION SOURCE</text>
+  <text x="106" y="244" fill="#ffffff" fill-opacity=".65" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="4">MASTERLEEAUS · PROJECT PORTFOLIO</text>
+</svg>
