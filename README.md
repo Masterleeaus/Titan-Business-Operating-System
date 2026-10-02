@@ -8,6 +8,13 @@ A Laravel application and product-development workspace for a modular business o
 
 ---
 
+## Product architecture and engineering highlights
+
+A Laravel modular business-platform codebase organized around shared operational domains, multiple user surfaces, and configurable service-industry workflows.
+
+- **Architecture:** The documented target maps nine product surfaces onto shared backend modules, with vertical overlays intended to vary terminology and workflows without forking the core. The repository contains Laravel modules, migrations, Filament resources, and PWA-oriented application code.
+- **Distinctive engineering:** The differentiator is a modular-monolith approach: shared business capabilities can serve owner, dispatch, worker, and customer experiences while vertical behaviour is expressed as configuration. Product-scope descriptions below identify architecture direction, not a claim that every surface is complete.
+
 ## Project status
 
 This repository is the **Titan BOS application source**. It is a substantial Laravel codebase with architecture documentation, modules, and tests. The broader product scope described here includes planned and in-progress work; individual capabilities, integrations, security controls, and performance claims require verification against implementation and test results before being represented as production-ready. No commercial pricing is established by this repository README.
