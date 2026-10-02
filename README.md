@@ -4,19 +4,17 @@
 
 > **Titan BOS. Zero BS.**
 
-A Laravel-based AI-controlled business operating system built for the cleaning industry and adjacent service verticals. One platform. Nine purpose-built nodes. Nineteen vertical overlays. Zero vendor lock-in.
+A Laravel application and product-development workspace for a modular business operating system aimed at cleaning and adjacent service industries. The repository documents a broader target architecture; the feature descriptions below are product direction and should not be read as a verified production-readiness checklist.
 
 ---
 
-## Portfolio housekeeping
+## Project status
 
-- This repository is the **Titan BOS application source**; it is not interchangeable with the `cleanly` repository. Their repository trees are distinct even though their current README text is identical. The README duplication is a documentation cleanup item, not evidence that either repository is a duplicate.
-- A tracked `.env.development` currently contains a production-style public URL and populated application/realtime secrets. Treat those values as exposed: rotate the application signing key and realtime credentials, replace the tracked file with a sanitized local template, and add `.env.*` to `.gitignore` while allowing `.env.example` and `.env.*.template`.
-- Portfolio status: **keep as the canonical Titan BOS application**. Its README should describe only implemented and verified capabilities; roadmap claims and pricing should be clearly labeled as planned or illustrative.
+This repository is the **Titan BOS application source**. It is a substantial Laravel codebase with architecture documentation, modules, and tests. The broader product scope described here includes planned and in-progress work; individual capabilities, integrations, security controls, and performance claims require verification against implementation and test results before being represented as production-ready. No commercial pricing is established by this repository README.
 
 ## What It Is
 
-Titan BOS replaces 5–7 separate tools most service businesses use:
+Titan BOS is intended to consolidate workflows that might otherwise use separate tools. The mapping below describes the product direction, not a verified feature-equivalence claim:
 
 | Replaces | With |
 |---|---|
@@ -28,21 +26,20 @@ Titan BOS replaces 5–7 separate tools most service businesses use:
 | AI assistant | Titan Zero (BYO API key) |
 | Document generation | TitanDocs (built-in) |
 
-**Total replacement value for a typical cleaning business: $200–800/month. Titan BOS delivers it from $79/month.**
+Any comparison with third-party pricing or savings needs current, region-specific research and a verified product feature set; no savings or price guarantee is made here.
 
 ---
 
-## Zero Philosophy
+## Product principles
 
-Every product decision is governed by the Zero Philosophy:
+These are design goals, not service-level guarantees:
 
-- **Zero missed calls** — Titan Hello answers every inbound, every channel, always
-- **Zero unanswered messages** — Titan Zero triages, responds, escalates
-- **Zero surprise bills** — transparent pricing, no platform transaction fees
-- **Zero vendor lock-in** — BYO AI key, BYO payment gateway, data portability
-- **Zero AI data resale** — company data never trains third-party models
-- **Zero code forks** — vertical specialisation via config overlay, not separate codebases
-- **Zero hidden complexity** — Titan Solo proves the platform can run a business in 3 taps
+- **Reliable response handling** — route calls and messages with explicit escalation paths
+- **Transparent costs** — disclose platform and provider charges before offering a paid plan
+- **Portability** — document supported export and provider-configuration paths
+- **Privacy controls** — define data retention and model-provider handling clearly
+- **Configurable verticals** — prefer shared modules and configuration where practical
+- **Simple workflows** — reduce unnecessary steps and make operational state visible
 
 ---
 
@@ -144,21 +141,13 @@ The 37 backend modules power all 9 nodes:
 
 **Client-facing:** Complaint (ClientFeedback) · Clients · Asset (CleanEquipment)
 
-**Integrations:** TitanIntegrations · QRCode · EInvoice
+**Integrations:** TitanIntegrations · QRCode
 
 ---
 
-## Pricing
+## Commercial model
 
-| Plan | Nodes | Target | Price |
-|---|---|---|---|
-| Solo | Titan Solo + Titan Go + ZeroPay | 1-person operator | ~$79/mo |
-| Grow | + Ground Zero + Zero Fuss + Titan Hello | 2–10 crew | ~$199/mo |
-| Pro | All 9 nodes | 10+ crew | ~$399/mo |
-| Enterprise | All nodes + multi-location + white-label | Franchise / group | Custom |
-
-**+$15–25/active crew member above plan threshold.**
-All 19 vertical overlays included at every tier. No transaction fees. No AI markup.
+No verified public pricing is established in this repository. Any earlier plan amounts, per-seat charges, included overlays, or transaction-fee statements should be treated as draft assumptions and must be validated against operating costs, provider charges, and the implemented product before publication.
 
 ---
 
@@ -201,16 +190,14 @@ npm run dev
 php artisan queue:work
 ```
 
-**Active development branch:** `claude/setup-agent-docs-ewAYA`
-
-Never push directly to `main`.
+Run checks from a configured development environment before proposing changes. This README update did not run the application test suite or build.
 
 ---
 
 ## Repository Structure
 
 ```
-cleanly/
+modules/
 ├── app/                    Core Laravel application
 ├── Modules/                37 domain modules (nwidart)
 ├── docs/                   Full architecture documentation
