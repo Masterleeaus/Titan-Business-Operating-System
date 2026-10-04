@@ -7,6 +7,7 @@ use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use TitanZero\FilamentChatbot\Filament\Resources\ChatbotChannelResource\Pages;
 use TitanZero\FilamentChatbot\Models\ChatbotChannel;
 
 class ChatbotChannelResource extends Resource
@@ -104,9 +105,9 @@ class ChatbotChannelResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListChatbotChannels::route('/'),
-            'create' => CreateChatbotChannel::route('/create'),
-            'edit' => EditChatbotChannel::route('/{record}/edit'),
+            'index' => Pages\ListChatbotChannels::route('/'),
+            'create' => Pages\CreateChatbotChannel::route('/create'),
+            'edit' => Pages\EditChatbotChannel::route('/{record}/edit'),
         ];
     }
 }
