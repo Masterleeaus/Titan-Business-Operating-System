@@ -57,6 +57,10 @@ Evidence is placed before feature marketing deliberately.
 
 They establish that the repository contains real provider drivers, a bounded tool-execution mechanism, module verification logic, regression tests, and an active CI pipeline.
 
+### Evidence freshness
+
+The CI counts above are a **dated evidence snapshot from run #95**, not a permanent statement about the moving `main` branch. The repository head has advanced since that run; rerun CI before quoting those counts as current.
+
 They do **not** establish:
 
 - production readiness
