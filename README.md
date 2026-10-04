@@ -219,9 +219,11 @@ npm run build
 
 Run these from a configured development environment. They were not run during this README update.
 
-### Current CI blocker
+### Current CI status
 
-The documentation PR triggered [CI run #79](https://github.com/Masterleeaus/modules/actions/runs/37173560103), but both jobs stopped during Composer package discovery before tests or migrations. `plugins/filament-chatbot/src/Filament/Resources/ChatbotResource.php` still declares Filament 3's `Filament\\Forms\\Form` signature while this repository requires Filament 4, whose `Resource::form()` contract uses `Filament\\Schemas\\Schema`. The same mismatch appears in the chatbot channel, customer, and conversation resources. This is an implementation blocker outside this documentation-only change; the README does not claim a passing application suite.
+Filament 4 compatibility for the chatbot admin resources was repaired in [PR #93](https://github.com/Masterleeaus/modules/pull/93) and merged into `main`. The change updates the four Resource form contracts, `AssistantRunResource::infolist()`, resource page namespace references, and stale asset registrations that pointed to missing files.
+
+Post-fix [PR CI run #89](https://github.com/Masterleeaus/modules/actions/runs/37175420993) passed Composer install and package discovery, so the application reached the test phase. It is not a passing full-suite result: the test job reported 724 failures / 13 passes from the existing SQLite `invoices` duplicate-table setup, while fresh migration failed at MySQL authentication (`root`, `using password: NO`). Those repository-wide test/database blockers remain separate from the chatbot compatibility fix. The README does not claim a passing application suite or production readiness.
 
 ---
 
