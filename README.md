@@ -92,10 +92,10 @@ Each overlay injects: terminology translation · workflow lifecycle model · com
 
 | Layer | Technology |
 |---|---|
-| Framework | Laravel 12, PHP 8.2 |
+| Framework | Laravel 12, PHP 8.4 |
 | Module system | nwidart/laravel-modules 10.x |
 | Admin panels | Filament 4 |
-| AI engine | laravel/ai + moneo/laravel-rag (BYO key: OpenAI / Anthropic / Gemini) |
+| AI surfaces | Chatbot provider adapters and tool-call loop; bounded InstantAds/EInvoice adapters; TitanZero remains a scaffold |
 | Real-time | Pusher + Laravel Echo |
 | Communications | Twilio (voice/SMS), Vonage, Telegram, OneSignal |
 | Payments | Stripe · Square · PayID · PayPal · Razorpay · Mollie · BPAY |
@@ -118,17 +118,28 @@ Titan BOS
 │   └── Each module: migrations, services, events, jobs, manifests, Filament plugin
 ├── Vertical Overlay System
 │   └── Config injection at boot — no code forks
-├── Titan Zero (AI)
-│   └── Single AI entry point — all modules route through TitanZero::query()
-│   └── BYO API key — no AI lock-in
-│   └── Vertical knowledge packs — becomes a specialist per industry
-└── Aegis (AI Safety)
-    └── Output filtering, compliance gate enforcement, mandatory reporting
+├── Implemented AI surfaces
+│   ├── plugins/filament-chatbot/ — provider adapters, tool definitions, bounded run processor
+│   ├── Modules/InstantAds/ — bounded OpenAI copy/image integrations with fallbacks
+│   └── Modules/EInvoice/AI/ — invoice-oriented OpenAI adapter and service
+├── TitanZero module scaffold
+│   └── Modules/TitanZero/ currently contains metadata/lifecycle manifests, not a central query runtime
+└── AI architecture documentation
+    └── docs/04-AI/ and docs/architecture/ describe the target governance and routing model
 ```
 
-**Core rule:** No module calls an AI provider directly. No node forks backend code. No vertical forks a node.
+**Implementation boundary:** the repository currently contains both a reusable chatbot driver/tool loop and bounded direct-provider feature adapters. The documented single `TitanZero::query()` gateway is a target architecture, not an implemented invariant. No node forks backend code, and vertical behaviour remains configuration-driven.
 
 ---
+
+## Implemented AI surface map
+
+- `plugins/filament-chatbot/src/Drivers/` normalises OpenAI-compatible, Anthropic, and Gemini APIs behind one driver contract.
+- `plugins/filament-chatbot/src/Services/RunProcessorService.php` persists runs and handles tool calls for up to five iterations before failing closed.
+- `Modules/InstantAds/Services/AdCopyService.php` and `AIChatImageService.php` provide bounded marketing-generation features, including fallback behaviour when provider configuration is absent.
+- `Modules/EInvoice/AI/` contains invoice-specific AI code; it is a feature adapter, not the central TitanZero gateway.
+- `Modules/TitanZero/module.json` and `manifests/lifecycle.json` are metadata-only in the current tree: the module has no providers, files, routes, or tests beyond placeholders.
+- No AI-specific automated test directory is present in the current tree. CI does run the general fresh-migration/module-verification job and the application test suite, but those checks do not prove every provider/tool path.
 
 ## Module Map
 
@@ -234,5 +245,5 @@ modules/
 1. Read `docs/README.md` first — always
 2. Check `docs/Titan_Blueprints/34-PLATFORM-AND-MODULE-CHECKLIST-MASTER.md` before marking work done
 3. All queries must be scoped to `company_id` — never cross-tenant
-4. All AI calls route through `TitanZero::query()` — never call providers directly
+4. Treat the implemented chatbot driver/tool loop as the reusable AI surface; consolidate bounded direct adapters before claiming a single gateway.
 5. Vertical specialisation is config, not code — never fork a module or node for a vertical
