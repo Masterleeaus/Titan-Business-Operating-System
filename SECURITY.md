@@ -1,131 +1,101 @@
 # Security Policy
 
-FieldOps Hub handles sensitive business data — customer personally identifiable information, service location details, financial records, and payment history. We take security seriously and appreciate responsible disclosure from the security community.
-
----
-
-## Supported Versions
-
-Only the latest release on the `production` branch receives security patches. We do not backport fixes to older releases.
-
-| Branch / Version | Security Updates |
-|-----------------|:----------------:|
-| `production` (latest) | ✅ |
-| Older commits | ❌ |
-
----
-
-## Reporting a Vulnerability
-
-**Please do not open a public GitHub issue for security vulnerabilities.**
-
-Report vulnerabilities privately using one of the following methods:
-
-- **GitHub Private Advisory** — [Submit via GitHub Security Advisories](../../security/advisories/new) *(preferred)*
-- **Email** — Send details to the repository owner through GitHub's contact information
-
-### What to include in your report
-
-To help us triage quickly, please provide as much of the following as possible:
-
-- A clear description of the vulnerability and its potential impact
-- The component, route, or feature affected
-- Step-by-step reproduction instructions
-- Proof-of-concept code or a screenshot (if applicable)
-- Your suggested severity (Critical / High / Medium / Low)
-- Whether you have already disclosed this to any third party
-
----
-
-## Response Timeline
-
-| Milestone | Target |
-|-----------|--------|
-| Acknowledgement of report | Within **48 hours** |
-| Initial triage and severity assessment | Within **5 business days** |
-| Fix or mitigation deployed | Within **30 days** for Critical/High, **90 days** for Medium/Low |
-| Public disclosure coordination | After fix is deployed and you are notified |
-
-We will keep you updated throughout the process and credit you in the release notes unless you prefer to remain anonymous.
-
----
-
 ## Scope
 
-### In scope
+Titan Business Operating System contains business-operation, customer, workforce, financial, communication, document, integration, and AI-assisted workflows.
 
-The following are valid targets for security research:
+Security-sensitive boundaries include:
 
-- **Authentication** — login, registration, password reset, 2FA (TOTP), session management
-- **Authorization** — role-based access control, permission enforcement, cross-tenant data access
-- **API endpoints** — all routes in `routes/web.php`, `routes/auth.php`, and `routes/settings.php`
-- **File uploads** — attachment handling, MIME type validation, path traversal
-- **Data exposure** — unintended PII or financial data leakage in Inertia shared props or API responses
-- **Injection** — SQL injection, XSS, command injection, mass assignment
-- **Multi-tenancy** — ability to access or modify another organization's data
+- authentication and authorization
+- tenant/company data isolation
+- AI tool execution
+- provider credentials
+- invoices, payments, payroll and finance
+- customer and service-location data
+- documents and file uploads
+- webhooks and third-party integrations
+- PWA / field-device synchronization
+- queues and background jobs
 
-### Out of scope
+## Supported code
 
-The following are explicitly excluded:
+The actively maintained target is the repository's current default branch, `main`.
 
-- Denial of service (DoS/DDoS) attacks
-- Spam, phishing, or social engineering attacks against users or staff
-- Vulnerabilities in third-party dependencies that are already publicly disclosed (report these to the upstream project)
-- Issues requiring physical access to infrastructure
-- Missing HTTP security headers on non-sensitive static assets
-- Rate limiting on endpoints that do not process sensitive data
-- Self-XSS that cannot be used to attack other users
-- Theoretical vulnerabilities without a working proof-of-concept
-- The `.env.example` file or other non-production configuration examples
+No claim is made that every historical branch or retained module receives security backports.
 
----
+## Reporting a vulnerability
 
-## Security Controls
+Do **not** publish exploitable details, real credentials, customer information, or destructive proof-of-concept material in a public issue.
 
-For context when evaluating the attack surface, FieldOps Hub includes the following security controls:
+Preferred path:
 
-| Control | Implementation |
-|---------|---------------|
-| Authentication | Laravel Fortify — bcrypt password hashing, configurable 2FA (TOTP) |
-| Authorization | spatie/laravel-permission v7 — per-organization roles and granular permissions |
-| Session management | Server-side sessions with CSRF protection on all state-changing requests |
-| Multi-tenancy isolation | All domain models are scoped by `organization_id` at the Eloquent model layer |
-| Input validation | Laravel Form Requests with strict validation rules on all write endpoints |
-| XSS protection | Inertia.js renders data server-side; cookie values are whitelisted before use in views |
-| Password policy | Laravel's `Password::defaults()` rule set enforced on all password fields |
-| Sensitive data in transit | Passwords and 2FA secrets are excluded from all Inertia shared props |
-| Soft deletes | Customer, property, invoice, and item records are soft-deleted, not permanently destroyed |
-| File attachments | Stored on a configurable disk; path and MIME type are recorded separately from the stored file |
+1. use GitHub Private Vulnerability Reporting / Security Advisories for this repository when available
+2. otherwise contact the repository owner privately through the account's published contact channel
+3. include the affected component, impact, reproduction conditions, and a minimal non-destructive proof
 
----
+## Security expectations
 
-## Disclosure Policy
+### Tenant isolation
 
-We follow a **coordinated disclosure** model:
+The current architecture uses tenant/company scoping as a design requirement.
 
-1. Reporter submits a private report.
-2. We triage, reproduce, and assess severity.
-3. We develop and test a fix.
-4. We deploy the fix to `production`.
-5. We notify the reporter and agree on a disclosure date (typically 7 days after the fix ships).
-6. We publish a security advisory crediting the reporter (unless anonymity is requested).
+Because the repository contains a large set of modules and historical naming conventions, this README does **not** claim that every query has been independently audited for isolation.
 
-We ask that you:
+Changes that read or mutate tenant-owned state should include cross-tenant negative tests.
 
-- Give us a reasonable amount of time to fix the issue before any public disclosure.
-- Avoid accessing, modifying, or deleting data that does not belong to a test account you control.
-- Not perform testing that degrades service availability for other users.
+### AI tool execution
 
----
+A model requesting a tool is not authorization to perform the action.
 
-## Hall of Fame
+Tool implementations should enforce ordinary application controls:
 
-We gratefully acknowledge security researchers who have helped improve FieldOps Hub. Researchers who responsibly disclose valid vulnerabilities will be listed here (with permission).
+```text
+authenticated actor
+      ↓
+tenant/company context
+      ↓
+capability / permission
+      ↓
+validated domain action
+      ↓
+state mutation
+```
 
-*No entries yet.*
+The bounded tool loop limits execution rounds but should not be treated as a security boundary by itself.
 
----
+### Provider credentials
 
-## Legal
+Provider API keys must remain server-side and must not be written to logs, committed to the repository, or returned to clients.
 
-Security research conducted in good faith, following this policy, will not result in legal action from us. We consider this a safe-harbor for researchers acting within the scope defined above.
+### External integrations
+
+Webhook and callback endpoints should verify signatures or equivalent authenticity controls where the upstream service supports them.
+
+### Financial state
+
+Invoice, payment, refund, payroll, and settlement changes should receive stricter authorization, audit, replay/idempotency, and regression coverage than ordinary read-only features.
+
+## Secrets
+
+Never commit:
+
+- API keys
+- OAuth client secrets
+- webhook signing secrets
+- production database credentials
+- customer exports
+- private certificates
+- real session tokens
+- payment credentials
+
+Use environment variables or deployment secret storage.
+
+## Current verification boundary
+
+The repository's CI pipeline is currently red. The current test and fresh-migration blockers are documented in `docs/evaluation.md`.
+
+Do not describe a security-sensitive change as fully verified when the relevant regression tests did not run successfully.
+
+## Responsible disclosure
+
+Good-faith research should minimize access to data that is not owned by the researcher, avoid service disruption, and allow reasonable time for remediation before public disclosure.
