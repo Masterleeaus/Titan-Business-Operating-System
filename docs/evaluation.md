@@ -12,6 +12,10 @@ This repository uses five different evidence labels:
 
 These labels are not interchangeable.
 
+## Remediation after the reviewed run
+
+The MySQL workflow configuration described below was repaired on `main`: CI now removes both commented and active DB settings from `.env` and appends one canonical testing database block. This is a configuration fix, not passing migration evidence. The duplicate `invoices` table ownership/collision remains unresolved and needs an explicit schema decision.
+
 ## Current CI evidence
 
 Reviewed workflow: `CI`, run #95 / GitHub Actions run `37176359112`.
