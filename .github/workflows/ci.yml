@@ -7,6 +7,24 @@ on:
     branches: ["main", "master"]
 
 jobs:
+  portable-paths:
+    name: Windows-portable tracked paths
+    runs-on: windows-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Check tracked paths
+        run: python tools/check_portable_paths.py
+
   migrate-fresh:
     name: Fresh Migration Check
     runs-on: ubuntu-latest

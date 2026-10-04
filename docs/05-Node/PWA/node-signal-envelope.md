@@ -7,7 +7,6 @@ This document defines the canonical signal envelope exchanged by Titan PWA Nodes
 The signal envelope is the transport-safe contract for runtime events. It allows nodes to emit actionable state changes without coupling the node UI or local runtime to any one backend implementation.
 
 ---
-
 ## Why Signal Envelopes Exist
 
 Signal envelopes provide:
@@ -23,7 +22,6 @@ Signal envelopes provide:
 This pattern aligns with event-driven decoupling, where side effects and downstream actions should be triggered through structured events rather than UI-local branching alone.
 
 ---
-
 ## Canonical Envelope Shape
 
 ```json
@@ -49,7 +47,6 @@ This pattern aligns with event-driven decoupling, where side effects and downstr
 ---
 
 ## Required Fields
-
 ### signal_id
 
 Unique identifier for this envelope instance.
@@ -84,7 +81,6 @@ Examples:
 - Cms
 - Omni
 - TitanZero
-
 ### tenant_id
 
 Primary tenant boundary field.
@@ -114,7 +110,6 @@ The authoritative event timestamp.
 ---
 
 ## Optional Fields
-
 ### workflow_id
 
 Links the signal to a workflow instance when present.
@@ -142,7 +137,6 @@ Allowed example values:
 - normal
 - high
 - urgent
-
 ### requires_approval
 
 Marks the signal as needing governance or operator approval before downstream actioning.
@@ -171,7 +165,6 @@ Examples:
 - node.offline
 - sync.failed
 - cache.evicted
-
 ### 3. Governance Signals
 
 Represent approval or policy checkpoints.
@@ -193,7 +186,6 @@ Examples:
 - ai.anomaly.flagged
 
 ---
-
 ## Payload Design Rules
 
 Payloads should be:
@@ -225,7 +217,6 @@ Bad payload example:
 - unserializable closures
 
 ---
-
 ## Versioning Strategy
 
 Signal contracts should support change over time.
@@ -242,7 +233,6 @@ Recommended fields inside `meta`:
 Versioning allows node and server runtimes to evolve without silent contract drift.
 
 ---
-
 ## Approval and Governance Integration
 
 If `requires_approval = true`, the envelope must not be treated as execution-ready.
@@ -257,7 +247,6 @@ Instead it should flow through:
 This preserves the Titan pattern where AI and automation propose or route actions, while governed layers approve them before domain execution.
 
 ---
-
 ## AI Context Use
 
 Signal envelopes are also lightweight AI context packs.
@@ -273,7 +262,6 @@ They can be used to:
 This matches the broader architecture where backends provide structured state and controller coordination, while higher reasoning layers operate on normalized context packs instead of raw UI state.
 
 ---
-
 ## Storage Expectations
 
 Node-local storage should preserve envelopes until:
@@ -291,7 +279,6 @@ Server-side storage should support:
 - workflow linkage
 
 ---
-
 ## Validation Rules
 
 Each envelope should be checked for:
@@ -306,7 +293,6 @@ Each envelope should be checked for:
 This follows the general emphasis on validation and clean request/application boundaries rather than trusting raw inbound data.
 
 ---
-
 ## Relationship to Future Docs
 
 This file is the contract base for:
@@ -320,7 +306,6 @@ This file is the contract base for:
 These documents will build on the envelope rules defined here.
 
 ---
-
 ## Required Envelope Guarantees
 
 The signal envelope contract should preserve these guarantees:

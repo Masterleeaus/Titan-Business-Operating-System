@@ -7,7 +7,6 @@ Defines how Titan PWA Nodes handle runtime upgrades safely across application co
 Upgrade coordination prevents broken queues, orphaned state, invalid replay, and hidden contract drift during version changes.
 
 ---
-
 ## Objectives
 
 The upgrade layer must ensure:
@@ -20,7 +19,6 @@ The upgrade layer must ensure:
 - operator-visible status during upgrades
 
 ---
-
 ## Upgrade Stages
 
 A safe node upgrade should move through:

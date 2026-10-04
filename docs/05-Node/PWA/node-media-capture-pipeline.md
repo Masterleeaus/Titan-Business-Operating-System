@@ -10,7 +10,6 @@ Defines how PWA nodes should capture, stage, queue, and reconcile photos/files/a
 - voice notes
 - document/photo uploads
 - signature artifacts
-
 ## Pipeline
 1. capture locally
 2. attach local metadata
@@ -28,7 +27,6 @@ Defines how PWA nodes should capture, stage, queue, and reconcile photos/files/a
 - capture timestamp
 - media type + mime
 - hash/checksum when available
-
 ## Local-first rules
 - never block user workflow on immediate upload
 - keep placeholder state visible in UI
@@ -40,7 +38,6 @@ Defines how PWA nodes should capture, stage, queue, and reconcile photos/files/a
 - dead-letter for corrupted/oversized assets
 - conflict state if parent record changed before upload
 - manual resend action for operator recovery
-
 ## Security
 - avoid leaking raw local file paths in envelopes
 - scrub metadata not required by business flow

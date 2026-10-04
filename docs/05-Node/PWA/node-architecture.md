@@ -7,7 +7,6 @@ This document defines the runtime architecture for Titan PWA Nodes. Nodes provid
 This file is Pass 01 of the cumulative Titan Docs Starter Kit output.
 
 ---
-
 ## Conceptual Model
 
 A Titan Node is a lightweight execution environment capable of:
@@ -25,7 +24,6 @@ Nodes operate as **first-class runtime peers**, not passive clients.
 ---
 
 ## Node Layers
-
 ### 1. Interface Layer
 
 Handles:
@@ -60,7 +58,6 @@ Storage targets:
 - encrypted local vault (optional secure contexts)
 
 ---
-
 ### 3. Sync Engine
 
 Coordinates:
@@ -78,7 +75,6 @@ Sync supports:
 - delta streaming updates
 
 ---
-
 ### 4. Signal Runtime
 
 Each node emits structured envelopes:
@@ -114,7 +110,6 @@ Evaluates:
 Triggers dispatch pipelines locally when possible before escalation upstream.
 
 ---
-
 ### 6. Edge AI Adapter (Optional)
 
 Provides:
@@ -143,7 +138,6 @@ Prevents unsafe automation execution offline.
 ---
 
 ## Node Types
-
 ### Operator Node
 
 Runs on:
@@ -186,7 +180,6 @@ Supports:
 - lightweight AI inference
 
 ---
-
 ### Edge Relay Node
 
 Acts as a sync concentrator.
@@ -213,7 +206,6 @@ Each node registers a worker handling:
 This enables resilient execution independent of network availability.
 
 ---
-
 ## Sync Conflict Strategy
 
 Priority order:
@@ -226,7 +218,6 @@ Priority order:
 Conflicts produce envelopes for arbitration instead of silent overwrite.
 
 ---
-
 ## Relationship to MVC Platform Core
 
 Nodes interact with Laravel MVC backends through structured API contracts where:
@@ -238,7 +229,6 @@ Nodes interact with Laravel MVC backends through structured API contracts where:
 This layered separation improves scalability and maintainability across distributed execution surfaces.
 
 ---
-
 ## Future Documents Depending on This File
 
 Upcoming passes:
@@ -252,13 +242,11 @@ Upcoming passes:
 These extend the contracts defined here.
 
 ---
-
 ## Runtime Interfaces
 
 This architecture document should be treated as the parent map for the rest of the Agent5 node docs.
 
 Primary runtime interfaces:
-
 - Service Worker Runtime for queue durability and offline continuity
 - Sync Engine for upstream and downstream reconciliation
 - Signal Envelope for transport-safe event contracts
@@ -269,7 +257,6 @@ Primary runtime interfaces:
 - Observability for auditability and diagnosis
 - Policy Overlays for tenant and vertical constraints
 - Operator Recovery Flows for human-visible failure handling
-
 ## Node State Domains
 
 A node should be understood as carrying several parallel state domains:

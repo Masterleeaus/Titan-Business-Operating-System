@@ -18,7 +18,6 @@ A node session must track:
 - package visibility snapshot version
 
 ---
-
 ## Rotation triggers
 
 Refresh or revalidate session on:
@@ -30,7 +29,6 @@ Refresh or revalidate session on:
 - explicit remote revocation notice
 
 ---
-
 ## Shared terminal rule
 
 On shared or kiosk-style nodes:
@@ -41,7 +39,6 @@ On shared or kiosk-style nodes:
 - clear tenant-scoped caches before another tenant/user can sign in
 
 ---
-
 ## Hard failure states
 
 The node must block write replay when it detects:

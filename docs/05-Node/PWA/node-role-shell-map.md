@@ -9,7 +9,6 @@ Primary conversational and comms shell. Owns messaging, inbox, channel surfaces,
 
 ### Titan Portal
 General staff/admin mobile surface. Owns approvals, status review, lightweight records, and role-aware navigation.
-
 ### Titan Command
 Owner/manager command surface. Owns oversight, dispatch visibility, exception handling, and live operational state.
 
@@ -18,7 +17,6 @@ Field worker shell. Owns today view, jobs, checklists, proof capture, notes, and
 
 ### Titan Money
 Finance/payment shell. Owns invoices, payment recovery, confirmations, and sensitive finance actions with stricter gates.
-
 ## Mapping rules
 - same business graph, different shell focus
 - same signal model, different UI priority

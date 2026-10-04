@@ -14,7 +14,6 @@ This document defines what the service worker may and may not own inside a Titan
 - deferred upload wake-ups
 - push event intake
 - cache invalidation on version change
-
 ## The service worker should not own
 
 - business rules
@@ -42,7 +41,6 @@ For offline status page and recovery instructions.
 ---
 
 ## Lifecycle events
-
 ### install
 - cache shell assets
 - cache offline fallback
@@ -62,7 +60,6 @@ For offline status page and recovery instructions.
 - wake queue processor
 - retry pending mutation and attachment uploads
 - stop on auth or tenant failures
-
 ### push
 - display local notification
 - attach deep-link route and action metadata

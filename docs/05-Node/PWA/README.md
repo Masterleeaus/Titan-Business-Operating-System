@@ -3,6 +3,9 @@
 This package is the **Agent 5 node/PWA documentation set** refocused around device nodes, offline execution, sync, service workers, push, and server handoff.
 
 It uses the original `Agent5Docs11_FULL` bundle as the base, then expands it using the project-source PWA/node docs and the `TitanPWA` module implementation files.
+## Repository path
+
+This set lives under `docs/05-Node/PWA/`. The path uses Windows-portable components so a clean checkout works on Windows and case-sensitive filesystems. From the repository root, run `python tools/check_portable_paths.py` to evaluate tracked paths before packaging or changing this documentation set.
 
 ## Scope
 
@@ -18,7 +21,6 @@ This set is intentionally limited to:
 - server handoff and reconciliation
 
 It avoids broad backend/module doctrine unless directly needed for node execution.
-
 ## Source basis used for v5
 
 - `Agent5.zip` → `Agent5Docs11_FULL`
@@ -35,7 +37,6 @@ It avoids broad backend/module doctrine unless directly needed for node executio
 - `node-api-envelope-contract.md`
 - `node-auth-session-rotation.md`
 - `node-capability-manifest.md`
-
 ## Edit approach
 
 These docs are edited cumulatively:

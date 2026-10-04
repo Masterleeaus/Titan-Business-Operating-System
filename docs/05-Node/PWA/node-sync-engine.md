@@ -7,7 +7,6 @@ This document specifies the Sync Engine responsible for reconciling Titan Node s
 This is Pass 02 of the cumulative Titan Docs Starter Kit output.
 
 ---
-
 ## Sync Engine Responsibilities
 
 The Sync Engine coordinates:
@@ -25,7 +24,6 @@ It guarantees deterministic convergence between node-local state and server-auth
 ---
 
 ## Sync Modes
-
 ### 1. Hydration Mode
 
 Executed when a node initializes or reconnects.
@@ -41,7 +39,6 @@ Responsibilities:
 Hydration always runs before mutation replay.
 
 ---
-
 ### 2. Mutation Replay Mode
 
 Processes locally staged updates.
@@ -74,7 +71,6 @@ Includes:
 Reduces bandwidth usage significantly.
 
 ---
-
 ### 4. Priority Sync Mode
 
 Triggered for critical workflows:
@@ -115,7 +111,6 @@ Stores outgoing envelopes for:
 Signals persist until acknowledged upstream.
 
 ---
-
 ### Retry Queue
 
 Stores failed transmissions.
@@ -140,7 +135,6 @@ Resolution order:
 Conflicts produce arbitration envelopes instead of overwriting data.
 
 ---
-
 ## Replay Protection
 
 Replay protection uses:
@@ -176,7 +170,6 @@ last_signal_commit
 These checkpoints guarantee incremental convergence.
 
 ---
-
 ## Offline Continuity Model
 
 While offline:
@@ -204,7 +197,6 @@ Sync supports:
 Transport adapters may switch dynamically depending on connectivity quality.
 
 ---
-
 ## Governance-Aware Sync
 
 If an operation requires approval:
@@ -230,7 +222,6 @@ Recovery pipeline:
 Ensures queue durability.
 
 ---
-
 ## Future Documents Depending on This File
 
 Upcoming passes:
@@ -243,7 +234,6 @@ Upcoming passes:
 These extend transport guarantees defined here.
 
 ---
-
 ## Sync Safety Rules
 
 The sync engine should never assume continuous connectivity.

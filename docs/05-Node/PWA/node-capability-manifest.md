@@ -11,7 +11,6 @@ This document defines the manifest a node should expose so the platform and UI c
 A phone, desktop browser, and rugged field tablet should not pretend to have the same runtime powers. Capability-aware routing improves reliability and reduces broken flows.
 
 ---
-
 ## Suggested manifest
 
 ```json
@@ -37,7 +36,6 @@ A phone, desktop browser, and rugged field tablet should not pretend to have the
 ```
 
 ---
-
 ## Usage
 
 The manifest should influence:

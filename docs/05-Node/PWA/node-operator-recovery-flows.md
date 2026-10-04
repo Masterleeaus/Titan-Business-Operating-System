@@ -7,7 +7,6 @@ Defines how operators are guided through recovery when Titan PWA Nodes encounter
 This document turns technical recovery states into practical human workflows.
 
 ---
-
 ## Why Operator Recovery Matters
 
 Even with durable queues and automated recovery, some failures still need visible operator handling.
@@ -24,7 +23,6 @@ Examples:
 Operators need structured flows, not vague error states.
 
 ---
-
 ## Recovery Flow Principles
 
 Recovery UX should be:
@@ -41,7 +39,6 @@ The node should explain what happened and what action is available next.
 ---
 
 ## Recovery Flow Classes
-
 ### 1. Connectivity Recovery
 
 Used when sync is blocked by network conditions.
@@ -59,7 +56,6 @@ Possible actions:
 - continue offline
 - retry now
 - inspect queued work
-
 ### 2. Approval Conflict Recovery
 
 Used when upstream approval denies or alters a locally staged transition.
@@ -77,7 +73,6 @@ Possible actions:
 - reopen task
 - request supervisor review
 - resubmit with changes
-
 ### 3. Replay Failure Recovery
 
 Used when one or more queued mutations cannot be committed.
@@ -94,7 +89,6 @@ Possible actions:
 - retry batch
 - isolate failed item
 - send for manual review
-
 ### 4. Storage Recovery
 
 Used when local storage integrity or migration fails.
@@ -111,7 +105,6 @@ Possible actions:
 - restart node
 - confirm recovery restore
 - escalate to support/admin
-
 ### 5. Policy Recovery
 
 Used when overlays, permissions, or governance rules block local behavior.
@@ -129,7 +122,6 @@ Possible actions:
 - save and hand off
 
 ---
-
 ## Minimum Recovery Screen Elements
 
 Every recovery flow should expose:
@@ -156,7 +148,6 @@ Local work may proceed and queue later.
 ### Continue with Limits
 
 Only low-risk actions allowed until reconciliation.
-
 ### Must Pause
 
 Governed or structurally unsafe situation; operator must stop or escalate.
@@ -178,7 +169,6 @@ When recovery cannot be handled locally, escalation may route to:
 Escalation should preserve context so operators do not need to rewrite the incident manually.
 
 ---
-
 ## Recovery State Persistence
 
 Recovery flows should survive refresh and app restart.
@@ -194,7 +184,6 @@ Persist at least:
 This prevents losing the operator’s place in the recovery process.
 
 ---
-
 ## Reason Codes and Language
 
 Technical reason codes are useful, but operator-facing wording should be plain.
@@ -209,7 +198,6 @@ Example mapping:
 This keeps recovery understandable.
 
 ---
-
 ## Relationship to Backbone Docs
 
 This document operationalizes outcomes from:
@@ -233,7 +221,6 @@ Possible next docs:
 - node-incident-capture.md
 
 ---
-
 ## Recovery Entry Conditions
 
 Recovery UX should trigger when any of the following persists beyond safe thresholds:

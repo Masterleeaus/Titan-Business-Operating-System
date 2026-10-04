@@ -7,7 +7,6 @@ Defines how Titan PWA Nodes apply policy overlays that modify behavior without f
 Policy overlays are interpreted as bounded rule packs layered on top of the shared node backbone.
 
 ---
-
 ## Why Overlays Exist
 
 A single node runtime must serve multiple environments that differ in:
@@ -26,7 +25,6 @@ Overlays let those differences be expressed declaratively instead of creating se
 ---
 
 ## Overlay Classes
-
 ### 1. Tenant Overlays
 
 Customize behavior per company or tenant.
@@ -38,7 +36,6 @@ Examples:
 - queue retention windows
 - allowed channels
 - allowed modules on node surfaces
-
 ### 2. Vertical Overlays
 
 Apply industry-specific constraints.
@@ -64,7 +61,6 @@ Examples:
 - privacy constraints
 - region-based consent flows
 - local communications restrictions
-
 ### 4. Contract Overlays
 
 Capture customer- or package-specific obligations.
@@ -89,7 +85,6 @@ Examples:
 - rugged offline-first policies
 
 ---
-
 ## Overlay Structure
 
 Recommended overlay shape:
@@ -115,7 +110,6 @@ Key properties:
 - compatibility metadata
 
 ---
-
 ## Evaluation Order
 
 When multiple overlays apply, evaluation should be deterministic.
@@ -133,7 +127,6 @@ Suggested order:
 Later overlays may narrow or strengthen constraints, but should not silently weaken mandatory base safety guarantees.
 
 ---
-
 ## Overlay Rule Domains
 
 Overlays may influence:
@@ -152,7 +145,6 @@ Overlays may influence:
 They should not directly rewrite core storage or signal semantics without explicit version compatibility.
 
 ---
-
 ## Governance Relationship
 
 Policy overlays are interpreted by the governance runtime, not by ad hoc UI conditions.
@@ -167,7 +159,6 @@ That means:
 This keeps policy consistent across node surfaces.
 
 ---
-
 ## Offline Behavior
 
 Nodes should cache active overlays locally so offline behavior remains policy-aligned.
@@ -183,7 +174,6 @@ While offline, overlays may still enforce:
 If an overlay expires or becomes unverifiable, the node should degrade toward a stricter safe mode.
 
 ---
-
 ## Overlay Compatibility
 
 Before activation, the node should verify:
@@ -197,7 +187,6 @@ Before activation, the node should verify:
 Unsupported overlays must be rejected cleanly rather than partially applied.
 
 ---
-
 ## Priority and Conflict Handling
 
 Overlay conflicts should resolve through:
@@ -211,7 +200,6 @@ Overlay conflicts should resolve through:
 No overlay conflict should result in ambiguous execution.
 
 ---
-
 ## Observability Requirements
 
 Overlay application should be visible in telemetry.
@@ -227,7 +215,6 @@ Useful events include:
 This makes policy-driven runtime differences inspectable.
 
 ---
-
 ## Example Overlay Effects
 
 Examples:
@@ -241,7 +228,6 @@ Examples:
 These are policy changes, not separate apps.
 
 ---
-
 ## Relationship to Other Docs
 
 This document extends:
@@ -265,7 +251,6 @@ Possible next docs:
 - node-regulated-data-handling.md
 
 ---
-
 ## Overlay Precedence
 
 When multiple overlays apply at once, precedence should be explicit rather than implied.

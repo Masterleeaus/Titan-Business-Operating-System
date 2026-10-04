@@ -5,7 +5,6 @@
 This document defines the preferred request and response payload structure for node sync operations.
 
 ---
-
 ## Request envelope
 
 Every sync request should carry:
@@ -30,7 +29,6 @@ Every sync request should carry:
 ```
 
 ---
-
 ## Mutation item
 
 ```json
@@ -60,7 +58,6 @@ Every sync request should carry:
   "created_at": "2026-04-20T08:01:10Z"
 }
 ```
-
 ## Attachment item
 
 ```json
@@ -93,7 +90,6 @@ The server should return one compact envelope:
   }
 }
 ```
-
 ### `accepted`
 Acknowledged mutations/signals that may be removed locally.
 
@@ -110,7 +106,6 @@ Fresh read-model updates to hydrate the node.
 State changes for queued actions that required governance.
 
 ---
-
 ## Rejection format
 
 ```json

@@ -7,7 +7,6 @@ Defines the service worker execution layer that enables Titan Nodes to function 
 This worker is the persistence and retry backbone of node autonomy.
 
 ---
-
 ## Responsibilities
 
 The service worker manages:
@@ -24,7 +23,6 @@ The service worker manages:
 It ensures node continuity even during extended disconnection.
 
 ---
-
 ## Service Worker Contracts
 
 The service worker should be treated as infrastructure, not just an asset cache.

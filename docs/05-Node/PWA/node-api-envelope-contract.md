@@ -31,7 +31,6 @@ Node APIs should be:
   }
 }
 ```
-
 ## Write response envelope
 
 ```json
@@ -63,7 +62,6 @@ Node APIs should be:
 ```
 
 ---
-
 ## Node-specific API families
 
 Recommended families:
