@@ -1,4 +1,4 @@
-![Titan Zero Modular Business Platform — LARAVEL APPLICATION SOURCE](docs/images/portfolio-banner.svg)
+![Titan Business Operating System — modular Laravel business platform with shared domains and configurable overlays](docs/images/titan-bos-banner.svg)
 
 # Titan Zero Modular Business Platform
 
@@ -9,6 +9,10 @@ A Laravel application and product-development workspace for a modular business o
 ---
 
 ## Product architecture and engineering highlights
+
+<p align="center">
+  <img src="docs/images/titan-bos-architecture.svg" alt="Titan Business Operating System flow from user surfaces through shared Laravel modules and vertical overlays to Filament, PWA, tests, and configuration." width="100%" />
+</p>
 
 A Laravel modular business-platform codebase organized around shared operational domains, multiple user surfaces, and configurable service-industry workflows.
 
