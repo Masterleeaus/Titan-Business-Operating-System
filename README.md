@@ -769,8 +769,8 @@ Performance claims should be added only with:
 
 ### Immediate
 
-- [ ] repair duplicate `invoices` migration/test state
-- [ ] repair fresh-migration CI database bootstrap
+- [ ] resolve canonical ownership of the `invoices` table / duplicate-creation collision
+- [x] repair fresh-migration CI database bootstrap configuration
 - [ ] get `migrate:fresh` to complete in CI
 - [ ] run `titan:module:verify --all` successfully in CI
 - [ ] reduce full-suite failures to zero or explicitly quarantined known cases
