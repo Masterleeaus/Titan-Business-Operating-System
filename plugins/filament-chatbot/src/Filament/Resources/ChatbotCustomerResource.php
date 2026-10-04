@@ -7,6 +7,7 @@ use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use TitanZero\FilamentChatbot\Filament\Resources\ChatbotCustomerResource\Pages;
 use TitanZero\FilamentChatbot\Models\ChatbotCustomer;
 
 class ChatbotCustomerResource extends Resource
@@ -75,9 +76,9 @@ class ChatbotCustomerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListChatbotCustomers::route('/'),
-            'create' => CreateChatbotCustomer::route('/create'),
-            'edit' => EditChatbotCustomer::route('/{record}/edit'),
+            'index' => Pages\ListChatbotCustomers::route('/'),
+            'create' => Pages\CreateChatbotCustomer::route('/create'),
+            'edit' => Pages\EditChatbotCustomer::route('/{record}/edit'),
         ];
     }
 }
