@@ -7,6 +7,7 @@ Defines the optional on-device and edge-assisted AI runtime for Titan PWA Nodes.
 It is designed to extend node autonomy without allowing uncontrolled execution.
 
 ---
+
 ## Responsibilities
 
 The Edge AI Runtime may provide:
@@ -23,6 +24,7 @@ The Edge AI Runtime may provide:
 It must remain bounded by governance and permission rules.
 
 ---
+
 ## Guardrails
 
 Edge AI must remain advisory unless an upstream-approved automation contract explicitly allows bounded execution.
@@ -34,6 +36,7 @@ Minimum guardrails:
 - no hidden policy bypass
 - no mutation without envelope emission where required
 - no approval skipping for protected actions
+
 ## Inputs and Outputs
 
 Typical inputs:

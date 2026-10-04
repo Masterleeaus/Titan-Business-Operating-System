@@ -7,6 +7,7 @@ Defines the observability model for Titan PWA Nodes so runtime behavior can be i
 Observability makes distributed node behavior measurable across offline execution, sync, governance, service worker runtime, and edge AI assistance.
 
 ---
+
 ## Objectives
 
 The observability layer must make it possible to answer:
@@ -20,6 +21,7 @@ The observability layer must make it possible to answer:
 - what state the node is currently in
 
 ---
+
 ## Minimum Telemetry Set
 
 Every node runtime should make these streams available:
@@ -32,6 +34,7 @@ Every node runtime should make these streams available:
 - upgrade activation and rollback events
 - operator recovery entry points
 - edge AI availability and fallback state
+
 ## Audit Linking
 
 Observability records should be linkable back to:

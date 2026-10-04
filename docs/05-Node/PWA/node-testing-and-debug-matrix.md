@@ -13,6 +13,7 @@ Provides the minimum test matrix Agent 5 should use before claiming the PWA/node
 - shell loads with network disabled
 - offline page appears for uncached routes
 - local actions queue correctly while offline
+
 ### Sync
 - queued mutations replay after reconnect
 - retries increment correctly
@@ -33,6 +34,7 @@ Provides the minimum test matrix Agent 5 should use before claiming the PWA/node
 - new worker installs
 - stale cache invalidates
 - update banner/refresh flow works
+
 ## Browser/device matrix
 - Chrome desktop
 - Android Chrome PWA

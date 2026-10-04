@@ -18,6 +18,7 @@ This document turns node/PWA runtime verification into a repeatable health proto
 - manifest reachable
 - install prompt conditions satisfied
 - icons and theme metadata resolve
+
 ### Service worker
 - current worker registered
 - active worker version matches expected release
@@ -34,6 +35,7 @@ This document turns node/PWA runtime verification into a repeatable health proto
 - pending and failed counts are queryable
 - processing endpoint updates states correctly
 - duplicate replay is rejected or merged safely
+
 ### Identity
 - node session belongs to the active tenant
 - company boundary is preserved in queued envelopes

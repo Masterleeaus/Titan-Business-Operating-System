@@ -7,6 +7,7 @@ Defines the node-local storage model, retention behavior, recovery guarantees, a
 This document closes the core runtime backbone by specifying how node state is preserved, compacted, inspected, replayed, and resolved when competing changes or partial failures occur.
 
 ---
+
 ## Responsibilities
 
 This layer owns:
@@ -34,6 +35,7 @@ The runtime should separate storage concerns into distinct buckets:
 - observability buffers
 - AI assistance cache if enabled
 - upgrade checkpoints
+
 ## Arbitration Inputs
 
 Conflict arbitration should consider:

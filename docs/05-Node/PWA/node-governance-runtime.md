@@ -8,6 +8,7 @@ permission-safe, replay-deterministic, and approval-gated during autonomous or a
 Governance guarantees that nodes recommend actions but never execute restricted operations independently.
 
 ---
+
 ## Responsibilities
 
 Governance runtime enforces:
@@ -21,6 +22,7 @@ Governance runtime enforces:
 - replay integrity guarantees
 
 ---
+
 ## Governance Check Order
 
 Recommended evaluation order:

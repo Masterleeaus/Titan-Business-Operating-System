@@ -19,6 +19,7 @@ The project-source `TitanPWA` module stores push subscriptions with:
 This means each node should treat push registration as **user + device scoped**, not as a single account-global token.
 
 ---
+
 ## Client registration flow
 
 1. confirm notification permission
@@ -41,6 +42,7 @@ This means each node should treat push registration as **user + device scoped**,
 ```
 
 ---
+
 ## Refresh triggers
 
 Refresh subscription on:

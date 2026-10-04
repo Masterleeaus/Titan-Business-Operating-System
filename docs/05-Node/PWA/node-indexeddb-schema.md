@@ -5,6 +5,7 @@
 This document defines the recommended local persistence schema for a Titan node running as a PWA. The goal is to keep the node small, resilient, and replay-safe rather than mirroring the full server database.
 
 ---
+
 ## Principles
 
 The local database should:
@@ -18,6 +19,7 @@ The local database should:
 ---
 
 ## Recommended stores
+
 ### 1. `node_meta`
 
 Purpose:
@@ -40,6 +42,7 @@ Fields:
   "last_permission_refresh_at": "2026-04-20T07:50:00Z"
 }
 ```
+
 ### 2. `read_models`
 
 Purpose:
@@ -60,6 +63,7 @@ Fields:
   "expires_at": null
 }
 ```
+
 ### 3. `mutation_queue`
 
 Purpose:
@@ -83,6 +87,7 @@ Fields:
   "status": "pending"
 }
 ```
+
 ### 4. `signal_outbox`
 
 Purpose:
@@ -102,6 +107,7 @@ Fields:
   "status": "queued"
 }
 ```
+
 ### 5. `attachments`
 
 Purpose:
@@ -122,6 +128,7 @@ Fields:
   "created_at": "2026-04-20T08:02:00Z"
 }
 ```
+
 ### 6. `ui_state`
 
 Purpose:
@@ -153,6 +160,7 @@ Fields:
 ```
 
 ---
+
 ## Required indexes
 
 Minimum indexes:
@@ -183,6 +191,7 @@ Do not purge automatically:
 - unresolved conflicts
 
 ---
+
 ## Boundary rule
 
 IndexedDB is a **node working database**, not a tenant database mirror. Store what the device needs to act, recover, and reconcile—nothing more.
