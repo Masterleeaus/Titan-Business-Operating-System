@@ -3,7 +3,7 @@
 namespace TitanZero\FilamentChatbot\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -21,10 +21,10 @@ class ChatbotConversationResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Forms\Components\Section::make('Conversation Details')
                     ->schema([
                         Forms\Components\TextInput::make('visitor_email')
