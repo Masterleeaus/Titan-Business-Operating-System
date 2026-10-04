@@ -121,7 +121,7 @@ Titan BOS
 ├── Implemented AI surfaces
 │   ├── plugins/filament-chatbot/ — provider adapters, tool definitions, bounded run processor
 │   ├── Modules/InstantAds/ — bounded OpenAI copy/image integrations with fallbacks
-│   └── Modules/EInvoice/AI/ — invoice-oriented OpenAI adapter and service
+│   └── Modules/EInvoice/AI/ — invoice-oriented OpenAI adapter
 ├── TitanZero module scaffold
 │   └── Modules/TitanZero/ currently contains metadata/lifecycle manifests, not a central query runtime
 └── AI architecture documentation
