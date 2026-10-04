@@ -46,12 +46,18 @@ jobs:
 
       - name: Configure test database
         run: |
-          sed -i 's/^DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env
-          sed -i 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' .env
-          sed -i 's/^DB_PORT=.*/DB_PORT=3306/' .env
-          sed -i 's/^DB_DATABASE=.*/DB_DATABASE=testing/' .env
-          sed -i 's/^DB_USERNAME=.*/DB_USERNAME=root/' .env
-          sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=password/' .env
+          # .env.example keeps several DB values commented out, so replacing
+          # only active lines leaves Laravel on its defaults. Remove either
+          # commented or active variants, then append one canonical CI block.
+          sed -i -E '/^#?[[:space:]]*DB_(CONNECTION|HOST|PORT|DATABASE|USERNAME|PASSWORD)=/d' .env
+          cat >> .env <<'EOF'
+          DB_CONNECTION=mysql
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          DB_DATABASE=testing
+          DB_USERNAME=root
+          DB_PASSWORD=password
+          EOF
 
       - name: Generate application key
         run: php artisan key:generate
