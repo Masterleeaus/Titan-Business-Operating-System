@@ -3,10 +3,11 @@
 namespace TitanZero\FilamentChatbot\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use TitanZero\FilamentChatbot\Filament\Resources\ChatbotConversationResource\Pages;
 use TitanZero\FilamentChatbot\Models\ChatbotConversation;
 
 class ChatbotConversationResource extends Resource
@@ -21,10 +22,10 @@ class ChatbotConversationResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Forms\Components\Section::make('Conversation Details')
                     ->schema([
                         Forms\Components\TextInput::make('visitor_email')
@@ -71,8 +72,8 @@ class ChatbotConversationResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListChatbotConversations::route('/'),
-            'view' => ViewChatbotConversation::route('/{record}'),
+            'index' => Pages\ListChatbotConversations::route('/'),
+            'view' => Pages\ViewChatbotConversation::route('/{record}'),
         ];
     }
 }

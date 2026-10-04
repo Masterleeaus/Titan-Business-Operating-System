@@ -2,9 +2,6 @@
 
 namespace TitanZero\FilamentChatbot;
 
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
-use Filament\Support\Facades\FilamentAsset;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -66,12 +63,6 @@ class ChatbotPluginServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        // Register assets
-        FilamentAsset::register([
-            Css::make('chatbot-styles', __DIR__ . '/../resources/css/chatbot.css'),
-            Js::make('chatbot-scripts', __DIR__ . '/../resources/js/chatbot.js'),
-        ], package: 'titanzero/filament-chatbot-plugin');
-
         // Register Livewire component for the AI assistant sidebar
         if (class_exists(Livewire::class)) {
             Livewire::component('chatbot-assistant-sidebar', AssistantSidebar::class);

@@ -3,10 +3,11 @@
 namespace TitanZero\FilamentChatbot\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use TitanZero\FilamentChatbot\Filament\Resources\ChatbotChannelResource\Pages;
 use TitanZero\FilamentChatbot\Models\ChatbotChannel;
 
 class ChatbotChannelResource extends Resource
@@ -21,10 +22,10 @@ class ChatbotChannelResource extends Resource
 
     protected static ?int $navigationSort = 3;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Forms\Components\Section::make('Channel Configuration')
                     ->schema([
                         Forms\Components\Select::make('chatbot_id')
@@ -104,9 +105,9 @@ class ChatbotChannelResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListChatbotChannels::route('/'),
-            'create' => CreateChatbotChannel::route('/create'),
-            'edit' => EditChatbotChannel::route('/{record}/edit'),
+            'index' => Pages\ListChatbotChannels::route('/'),
+            'create' => Pages\CreateChatbotChannel::route('/create'),
+            'edit' => Pages\EditChatbotChannel::route('/{record}/edit'),
         ];
     }
 }
