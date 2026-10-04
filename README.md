@@ -223,7 +223,7 @@ Run these from a configured development environment. They were not run during th
 
 Filament 4 compatibility for the chatbot admin resources was repaired in [PR #93](https://github.com/Masterleeaus/modules/pull/93) and merged into `main`. The change updates the four Resource form contracts, `AssistantRunResource::infolist()`, resource page namespace references, and stale asset registrations that pointed to missing files.
 
-Current-head [PR CI run #91](https://github.com/Masterleeaus/modules/actions/runs/37175984873) passed Composer install and package discovery, so the application reached the test phase. It is not a passing full-suite result: the test job reported 724 failures / 13 passes from the existing SQLite `invoices` duplicate-table setup, while fresh migration failed at MySQL authentication (`root`, `using password: NO`). Those repository-wide test/database blockers remain separate from the chatbot compatibility fix. The README does not claim a passing application suite or production readiness.
+Current-head [PR CI run #93](https://github.com/Masterleeaus/modules/actions/runs/37176197106) passed Composer install and package discovery, so the application reached the test phase. It is not a passing full-suite result: the test job reported 724 failures / 13 passes from the existing SQLite `invoices` duplicate-table setup, while fresh migration failed at MySQL authentication (`root`, `using password: NO`). Those repository-wide test/database blockers remain separate from the chatbot compatibility fix. The README does not claim a passing application suite or production readiness.
 
 ---
 
