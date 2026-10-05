@@ -9,9 +9,10 @@
 - `inspection_schedules.*`
 - `schedule-inspection.*`
 
-## Deploy
+## Validate from a checkout
+Run these commands from the repository root:
+
 ```bash
-cd /home/saassmar/domains/admin.buildsm.art/public_html
 php artisan optimize:clear
 php artisan route:clear
 ```
